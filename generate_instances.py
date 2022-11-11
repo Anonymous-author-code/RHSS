@@ -32,7 +32,7 @@ def write_vrplib(filename, loc, demand, capacity, grid_size, name="problem"):
         ]))
         f.write("\n")
         f.write("DEPOT_SECTION\n")
-        f.write("1\n")
+        f.write("1\n") 
         f.write("-1\n")
         f.write("EOF\n")
 
