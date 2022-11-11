@@ -153,7 +153,7 @@ class VRPInstance():
         nb_customers_to_remove = int(self.nb_customers * p)
         random_point = np.random.rand(1, 2)
         dist = np.sum((self.locations[1:] - random_point) ** 2, axis=1)
-        closest_customers_idx = np.argsort(dist)[:nb_customers_to_remove] + 1
+        closest_customers_idx = np.argsort(dist)[:nb_customers_to_remove] + 1  
         self.destroy(closest_customers_idx)
 
     def destroy_tour_based(self, p):
