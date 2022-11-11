@@ -40,7 +40,7 @@ def get_config():
     parser.add_argument('--lns_adaptive_search', default=False, action='store_true')
     parser.add_argument('--nb_runs', default=1, type=int)
 
-    config = parser.parse_args()
+    config = parser.parse_args() 
 
     config_d = vars(config)
     config_d['device'] = torch.device(config.device)
