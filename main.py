@@ -64,6 +64,6 @@ if __name__ == '__main__':
             raise Exception("Batch mode only supports .pkl instances files.")
         search.evaluate_batch_search(config, config.model_path)
     elif config.mode == "eval_single":
-        search.evaluate_single_search(config, config.model_path, config.instance_path)
+        search.evaluate_single_search(config, config.model_path, config.instance_path) 
     else:
         raise Exception("Unknown mode")
