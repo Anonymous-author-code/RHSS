@@ -117,4 +117,4 @@ def repair(instances, actor, config, critic=None):
 
     tour_idx, tour_logp = _actor_model_forward(actor, instances, static_input, dynamic_input, config, vehicle_capacity)
 
-    return tour_idx, tour_logp, cost_estimate
+    return tour_idx, tour_logp, cost_estimate 
