@@ -82,7 +82,7 @@ class VrpActorModel(nn.Module):
         self.origin_embed = Encoder(4, hidden_size)
 
         for p in self.parameters():
-            if len(p.shape) > 1:
+            if len(p.shape) > 1: 
                 nn.init.xavier_uniform_(p)
 
     def forward(self, static_input, dynamic_input_float, origin_static_input, origin_dynamic_input_float, mask):
