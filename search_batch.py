@@ -98,7 +98,7 @@ def lns_batch_search_mp(config, model_path):
         nb_instances = len(read_instances_pkl(config.instance_path))
     assert nb_instances % config.lns_nb_cpus == 0
     test_size_per_cpu = nb_instances // config.lns_nb_cpus
-
+ 
     if config.lns_nb_cpus > 1:
         with mp.Pool(config.lns_nb_cpus) as pool:
             results = pool.map(
