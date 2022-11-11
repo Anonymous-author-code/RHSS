@@ -42,5 +42,5 @@ class VrpCriticModel(nn.Module):
 
         output = F.relu(self.fc1(hidden))
         output = F.relu(self.fc2(output))
-        output = self.fc3(output).sum(dim=2)
+        output = self.fc3(output).sum(dim=2) 
         return output
