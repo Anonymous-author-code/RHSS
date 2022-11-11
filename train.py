@@ -127,4 +127,4 @@ def lns_validation_search(validation_instances, actor, config):
     costs, _ = lns_batch_search(validation_instances_copies, config.lns_max_iterations,
                                 config.lns_timelimit_validation, [operation], config)
     actor.train()
-    return np.mean(costs)
+    return np.mean(costs) 
