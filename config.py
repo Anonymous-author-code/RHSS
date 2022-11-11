@@ -29,7 +29,7 @@ def get_config():
     parser.add_argument('--model_path', default=None, type=str)
     parser.add_argument('--instance_path', default=None, type=str)
     parser.add_argument('--test_size', default=2000, type=int)
-    parser.add_argument('--lns_nb_cpus', default=1, type=int)
+    parser.add_argument('--lns_nb_cpus', default=1, type=int) 
     parser.add_argument('--lns_timelimit', default=180, type=int)
     parser.add_argument('--lns_max_iterations', default=50000, type=int)  # Is ignored by single instance search
     parser.add_argument('--lns_batch_size', default=300, type=int)
