@@ -30,7 +30,7 @@ def get_blueprint(blueprint_name):
         return vrp.dataset_blueprints.XE.dataset[instance]
     elif type == "S":
         import vrp.dataset_blueprints.S
-        return vrp.dataset_blueprints.S.dataset[instance]
+        return vrp.dataset_blueprints.S.dataset[instance] 
     raise Exception('Unknown blueprint instance')
 
 
