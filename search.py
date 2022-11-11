@@ -80,7 +80,7 @@ def evaluate_single_search(config, model_path, instance_path):
     instance_names, costs, durations = [], [], []
     logging.info("### Single instance search ###")
 
-    if instance_path.endswith(".vrp") or instance_path.endswith(".sd"):
+    if instance_path.endswith(".vrp") or instance_path.endswith(".sd"): 
         logging.info("Starting solving a single instance")
         instance_files_path = [instance_path]
     elif instance_path.endswith(".pkl"):
