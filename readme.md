@@ -1,34 +1,21 @@
-# NLNS - Neural Large Neighborhood Search
+# RHSS - Learning Local Rewriting from the Perspective of Group Mining
 
-This repository contains the code used for the experiments in the paper "Neural Large Neighborhood Search for the Capacitated Vehicle Routing Problem" (https://arxiv.org/abs/1911.09539).
+This repository contains the code used for the experiments in the paper "Learning Local Rewriting from the Perspective of Group Mining" 
 
-Neural large neighborhood search (NLNS) integrates learned heuristics in a large neighborhood search framework to solve the capacitated vehicle routing problem (CVRP) and the split delivery vehicle routing problem (SDVRP). During the search for solutions, NLNS repeditatly "destroys" routing problem solutions and then "repairs" them using deep neural network models with attention mechanism. The models are trained via reinforcement learning. In contrast to many existing machine learning based approaches for solving routing problems, NLNS is able to profit from longer runtimes (> 60s) and can be applied to real world-sized routing problem instances.
+During the search for solutions, RHSS repeditatly "destroys" routing problem solutions and then "repairs" them using deep neural network models with attention mechanism. The models are trained via reinforcement learning. In contrast to many existing machine learning based approaches for solving routing problems, RHSS is able to profit from longer runtimes (> 60s) and can be applied to real world-sized routing problem instances.
 
-### Instances 
 
-The XE instances used for the experiments in the paper can be found in the folder "instances". Each instance set consists of 20 instances that have similar properties. More instances with similar properties can be generated as described below.
-
-### Paper
-```
-@inproceedings{
-    hottung2020neural,
-    title={Neural Large Neighborhood Search for the Capacitated Vehicle Routing Problem},
-    author={Andr{\'e} Hottung and Kevin Tierney},
-    booktitle={24th European Conference on Artificial Intelligence (ECAI 2020)},
-    year={2020}
-}
-```
 
 ## Requirements
 
 NLNS requires python (>= 3.6) and the following python packages:
 
 - numpy
-- pytorch (we used version 1.3.1 for evaluating NLNS)
+- pytorch (we used version 1.3.1 for evaluating RHSS)
 
 ## Quick Start
 
-By default, NLNS uses the GPU. If you want to run NLNS on the CPU only, use the `--device cpu` option.
+
 
 ### Single Instance Search
 
@@ -95,15 +82,6 @@ A model (i.e., a repair operator) is trained to repair instances from a known di
 python3 main.py --mode train --instance_blueprint ALTR_20 --lns_destruction T --lns_destruction_p 0.2 --nb_batches_training_set 500 --lns_timelimit 300 --lns_batch_size 500
 ```
 
-The size of the training set can be defined by the flag ``--nb_batches_training_set`` in batches (we use 1500 batches in our experiments). The batch size used training can be set via the `--batch_size` flag. The size of the validation and test set can be defined by the flags ``--valid_size`` and ``--test_size`` in absolute number of instances. The instances used for training and validation are generated before the training (which might take a while).  Every 5000 batches the model is validated in a batch search (with a batch size defined by `--lns_batch_size`). After the training the model is evaluated on the test set. The runtime of the batch search on the test set can be adjusted using the `--lns_timelimit` flag. For example, to train models for the *XE* instances we use `--lns_timelimit 3600`. The runtime of the validation search is adjusted automatically based on the validation set size.
-
-The `--lns_destruction` flag defines the destroy procedure used during training. Currently random destroy (R), tour-based destroy (T) and point-based destroy (P) are implemented.
-
-To allow split deliveries during training use the `--allow_split_delivery` flag.
-
-For each run, a separate folder is created in the *runs* directory. The associated log file can be used to monitor the progress of the training. The model weights of the model with the best validation performance is stored in the subdirectory *models*. A description of the destroy operator (i.e., destroy procedure + degree of destruction) used during the training is stored in the model data and is used when the model is employed in a search. 
-
-The definition of the instance group properties can be found in the folder *dataset_blueprints* (e.g., in fhe file *XE.py* for the XE_instance group). If you want to solve instances with different properties (e.g., number of customers) you need to define a corresponding new instance blueprint in the code.
 
 
 ### Instance Generator (XE instances)
@@ -114,6 +92,3 @@ You can generate new instances from the XE instance groups and save them as .vrp
 python3 generate_instances.py --data_dir data/XE_1_instances --instance_blueprint XE_1 --dataset_size 10 --seed 0
 ```
 
-## Acknowledgements
-
-Parts of the code are based on https://github.com/mveres01/pytorch-drl4vrp which is a great starting point for learning/implementing deep reinforcement learning approaches for vehicle routing problems. Furthermore, some parts of the code are inspired by https://github.com/wouterkool/attention-learn-to-route and https://github.com/OptMLGroup/VRP-RL. 
