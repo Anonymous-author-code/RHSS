@@ -31,7 +31,7 @@ def lns_single_seach_job(args):
 
             iter = -1
             # Repeat until the time limit of one reheating iteration is reached
-            while time.time() - start_time_reheating < config.lns_timelimit / config.lns_reheating_nb:
+            while time.time() - start_time_reheating < config.lns_timelimit / config.lns_reheating_nb: 
                 iter += 1
 
                 # Set the first config.lns_Z_param percent of the instances/solutions in the batch
